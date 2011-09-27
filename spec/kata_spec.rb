@@ -1,6 +1,6 @@
 def parse(input)
   if input.length > 0
-    input[0]
+    input.split("\n").map {|s| s[0]}.join
   else
     input
   end
