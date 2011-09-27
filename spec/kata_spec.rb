@@ -32,9 +32,6 @@ c =>
 END
       output = parse(input)
       output.length.should == 3
-      output[0].should_not == output[1]
-      output[0].should_not == output[2]
-      output[1].should_not == output[2]
       ['a', 'b', 'c'].each do |job|
         output.should match(/#{job}/)
       end
