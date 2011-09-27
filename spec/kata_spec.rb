@@ -1,5 +1,9 @@
 def parse(input)
-  input
+  if input.length > 0
+    input[0]
+  else
+    input
+  end
 end
 
 describe 'Ordered Jobs' do
@@ -16,7 +20,7 @@ describe 'Ordered Jobs' do
 
     it 'returns the single job' do
       input = "#{job} =>"
-      output = 'a'
+      output = parse(input)
       output.should == job
     end
   end
