@@ -1,5 +1,7 @@
 def parse(input)
-  input.split("\n").map {|s| s[0]}.reverse.join
+  dependencies = input.split("\n")
+  jobs = dependencies.map {|s| s[0]}
+  jobs.reverse.join
 end
 
 describe 'Ordered Jobs' do
