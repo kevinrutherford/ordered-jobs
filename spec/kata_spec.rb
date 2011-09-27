@@ -1,9 +1,5 @@
 def parse(input)
-  if input.length > 0
-    input.split("\n").map {|s| s[0]}.reverse.join
-  else
-    input
-  end
+  input.split("\n").map {|s| s[0]}.reverse.join
 end
 
 describe 'Ordered Jobs' do
