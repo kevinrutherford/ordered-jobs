@@ -4,6 +4,16 @@ def parse(input)
   jobs.reverse.join
 end
 
+shared_examples_for 'it reports all of the jobs' do |expected_jobs|
+  it 'returns the correct number of jobs' do
+    subject.length.should == expected_jobs.length
+  end
+
+  it 'reports every job' do
+    expected_jobs.each { |job| subject.index(job).should_not be_nil }
+  end
+end
+
 describe 'Ordered Jobs' do
   subject { parse(input) }
 
@@ -18,9 +28,7 @@ describe 'Ordered Jobs' do
   context 'step 2 -- single job' do
     let(:input) { 'a =>' }
 
-    it 'returns the single job' do
-      subject.should == 'a'
-    end
+    it_should_behave_like 'it reports all of the jobs', %w{a}
   end
 
   context 'step 3 -- multiple jobs' do
@@ -30,15 +38,7 @@ b =>
 c =>
 ' }
 
-    it 'returns the correct number of jobs' do
-      subject.length.should == 3
-    end
-
-    it 'returns the jobs in any order' do
-      ['a', 'b', 'c'].each do |job|
-        subject.should match(/#{job}/)
-      end
-    end
+    it_should_behave_like 'it reports all of the jobs', %w{a b c}
   end
 
   context 'step 4 -- multiple jobs, single dependency' do
@@ -48,15 +48,7 @@ b => c
 c =>
 ' }
 
-    it 'returns the correct number of jobs' do
-      subject.length.should == 3
-    end
-
-    it 'reports every job' do
-      ['a', 'b', 'c'].each do |job|
-        subject.should match(/#{job}/)
-      end
-    end
+    it_should_behave_like 'it reports all of the jobs', %w{a b c}
 
     it 'puts c before b' do
       subject.index('b').should > subject.index('c')
@@ -73,15 +65,7 @@ e => b
 f =>
 ' }
 
-    it 'gets the right number of jobs' do
-      subject.length.should == 6
-    end
-
-    it 'reports every job' do
-      %w{a b c d e f}.each do |job|
-        subject.should match(/#{job}/)
-      end
-    end
+    it_should_behave_like 'it reports all of the jobs', %w{a b c d  e f}
   end
 end
 
