@@ -24,22 +24,18 @@ describe 'Ordered Jobs' do
   end
 
   context 'step 3 -- multiple jobs' do
-    it 'returns the correct number of jobs' do
-      input = <<-END
+    let(:input) { '
 a =>
 b =>
 c =>
-END
+' }
+
+    it 'returns the correct number of jobs' do
       output = parse(input)
       output.length.should == 3
     end
 
     it 'returns the jobs in any order' do
-      input = <<-END
-a =>
-b =>
-c =>
-END
       output = parse(input)
       ['a', 'b', 'c'].each do |job|
         output.should match(/#{job}/)
@@ -48,22 +44,18 @@ END
   end
 
   context 'step 4 -- multiple jobs, single dependency' do
-    it 'returns the correct number of jobs' do
-      input = <<-END
+    let(:input) { '
 a =>
 b => c
 c =>
-END
+' }
+
+    it 'returns the correct number of jobs' do
       output = parse(input)
       output.length.should == 3
     end
 
     it 'reports every job' do
-      input = <<-END
-a =>
-b => c
-c =>
-END
       output = parse(input)
       ['a', 'b', 'c'].each do |job|
         output.should match(/#{job}/)
@@ -71,39 +63,27 @@ END
     end
 
     it 'puts c before b' do
-      input = <<-END
-a =>
-b => c
-c =>
-END
       output = parse(input)
       output.index('b').should > output.index('c')
     end
   end
 
   context 'step 5 -- multiple jobs, multiple dependencies' do
-    it 'gets the right number of jobs' do
-      input = <<-END
+    let(:input) { '
 a =>
 b => c
 c => f
 d => a
 e => b
 f =>
-END
+' }
+
+    it 'gets the right number of jobs' do
       output = parse(input)
       output.length.should == 6
     end
 
     it 'reports every job' do
-      input = <<-END
-a =>
-b => c
-c => f
-d => a
-e => b
-f =>
-END
       output = parse(input)
       %w{a b c d e f}.each do |job|
         output.should match(/#{job}/)
