@@ -5,12 +5,13 @@ def parse(input)
 end
 
 describe 'Ordered Jobs' do
+  subject { parse(input) }
+
   context 'step 1 -- empty string' do
     let(:input) { '' }
 
     it 'returns an empty string' do
-      output = parse(input)
-      output.should == ''
+      subject.should == ''
     end
   end
 
@@ -18,8 +19,7 @@ describe 'Ordered Jobs' do
     let(:input) { 'a =>' }
 
     it 'returns the single job' do
-      output = parse(input)
-      output.should == 'a'
+      subject.should == 'a'
     end
   end
 
@@ -31,14 +31,12 @@ c =>
 ' }
 
     it 'returns the correct number of jobs' do
-      output = parse(input)
-      output.length.should == 3
+      subject.length.should == 3
     end
 
     it 'returns the jobs in any order' do
-      output = parse(input)
       ['a', 'b', 'c'].each do |job|
-        output.should match(/#{job}/)
+        subject.should match(/#{job}/)
       end
     end
   end
@@ -51,20 +49,17 @@ c =>
 ' }
 
     it 'returns the correct number of jobs' do
-      output = parse(input)
-      output.length.should == 3
+      subject.length.should == 3
     end
 
     it 'reports every job' do
-      output = parse(input)
       ['a', 'b', 'c'].each do |job|
-        output.should match(/#{job}/)
+        subject.should match(/#{job}/)
       end
     end
 
     it 'puts c before b' do
-      output = parse(input)
-      output.index('b').should > output.index('c')
+      subject.index('b').should > subject.index('c')
     end
   end
 
@@ -79,14 +74,12 @@ f =>
 ' }
 
     it 'gets the right number of jobs' do
-      output = parse(input)
-      output.length.should == 6
+      subject.length.should == 6
     end
 
     it 'reports every job' do
-      output = parse(input)
       %w{a b c d e f}.each do |job|
-        output.should match(/#{job}/)
+        subject.should match(/#{job}/)
       end
     end
   end
