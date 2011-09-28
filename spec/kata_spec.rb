@@ -67,6 +67,21 @@ END
       output = parse(input)
       output.length.should == 6
     end
+
+    it 'reports every job' do
+      input = <<-END
+a =>
+b => c
+c => f
+d => a
+e => b
+f =>
+END
+      output = parse(input)
+      %w{a b c d e f}.each do |job|
+        output.should match(/#{job}/)
+      end
+    end
   end
 end
 
