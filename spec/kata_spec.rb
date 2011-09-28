@@ -6,20 +6,20 @@ end
 
 describe 'Ordered Jobs' do
   context 'step 1 -- empty string' do
+    let(:input) { '' }
+
     it 'returns an empty string' do
-      input = ''
       output = parse(input)
       output.should == ''
     end
   end
 
   context 'step 2 -- single job' do
-    let(:job) { 'a' }
+    let(:input) { 'a =>' }
 
     it 'returns the single job' do
-      input = "#{job} =>"
       output = parse(input)
-      output.should == job
+      output.should == 'a'
     end
   end
 
