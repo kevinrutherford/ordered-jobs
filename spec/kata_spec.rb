@@ -37,5 +37,22 @@ END
       end
     end
   end
+
+  context 'multiple jobs, single dependency' do
+    it '' do
+      input = <<-END
+a =>
+b => c
+c =>
+END
+      output = parse(input)
+      output = parse(input)
+      output.length.should == 3
+      ['a', 'b', 'c'].each do |job|
+        output.should match(/#{job}/)
+      end
+      output.index('b').should > output.index('c')
+    end
+  end
 end
 
