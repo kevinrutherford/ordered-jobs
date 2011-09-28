@@ -5,7 +5,7 @@ def parse(input)
 end
 
 describe 'Ordered Jobs' do
-  context 'empty string' do
+  context 'step 1 -- empty string' do
     it 'returns an empty string' do
       input = ''
       output = parse(input)
@@ -13,7 +13,7 @@ describe 'Ordered Jobs' do
     end
   end
 
-  context 'single job' do
+  context 'step 2 -- single job' do
     let(:job) { 'a' }
 
     it 'returns the single job' do
@@ -23,7 +23,7 @@ describe 'Ordered Jobs' do
     end
   end
 
-  context 'multiple jobs' do
+  context 'step 3 -- multiple jobs' do
     it 'returns the jobs in any order' do
       input = <<-END
 a =>
@@ -38,20 +38,34 @@ END
     end
   end
 
-  context 'multiple jobs, single dependency' do
-    it '' do
+  context 'step 4 -- multiple jobs, single dependency' do
+    it 'puts c before b' do
       input = <<-END
 a =>
 b => c
 c =>
 END
       output = parse(input)
-      output = parse(input)
       output.length.should == 3
       ['a', 'b', 'c'].each do |job|
         output.should match(/#{job}/)
       end
       output.index('b').should > output.index('c')
+    end
+  end
+
+  context 'step 5 -- multiple jobs, multiple dependencies' do
+    it 'gets the right number of jobs' do
+      input = <<-END
+a =>
+b => c
+c => f
+d => a
+e => b
+f =>
+END
+      output = parse(input)
+      output.length.should == 6
     end
   end
 end
