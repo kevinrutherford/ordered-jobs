@@ -69,6 +69,8 @@ f =>
 ' }
 
     it_should_behave_like 'it reports all of the jobs', %w{a b c d e f}
+    it_should_behave_like 'jobs come in this order', 'd', 'a'
+    it_should_behave_like 'jobs come in this order', 'e', 'b'
   end
 end
 
