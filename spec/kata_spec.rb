@@ -14,6 +14,12 @@ shared_examples_for 'it reports all of the jobs' do |expected_jobs|
   end
 end
 
+shared_examples_for 'jobs come in this order' do |job1, job2|
+  it "#{job1} before #{job2}" do
+    subject.index(job1).should < subject.index(job2)
+  end
+end
+
 describe 'Ordered Jobs' do
   subject { parse(input) }
 
@@ -49,10 +55,7 @@ c =>
 ' }
 
     it_should_behave_like 'it reports all of the jobs', %w{a b c}
-
-    it 'puts c before b' do
-      subject.index('b').should > subject.index('c')
-    end
+    it_should_behave_like 'jobs come in this order', 'c', 'b'
   end
 
   context 'step 5 -- multiple jobs, multiple dependencies' do
@@ -65,7 +68,7 @@ e => b
 f =>
 ' }
 
-    it_should_behave_like 'it reports all of the jobs', %w{a b c d  e f}
+    it_should_behave_like 'it reports all of the jobs', %w{a b c d e f}
   end
 end
 
