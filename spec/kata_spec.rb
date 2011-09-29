@@ -1,4 +1,5 @@
 require './lib/jobs_list'
+require './lib/instruction'
 require './lib/schedule'
 
 def parse(input)

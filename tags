@@ -4,10 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+Instruction	lib/instruction.rb	/^class Instruction$/;"	c
 JobsList	lib/jobs_list.rb	/^class JobsList$/;"	c
 Schedule	lib/schedule.rb	/^class Schedule$/;"	c
 add	lib/schedule.rb	/^  def add(instruction)$/;"	f	class:Schedule
+add_to	lib/instruction.rb	/^  def add_to(schedule)$/;"	f	class:Instruction
 add_to	lib/jobs_list.rb	/^  def add_to(schedule)$/;"	f	class:JobsList
+initialize	lib/instruction.rb	/^  def initialize(line)$/;"	f	class:Instruction
 initialize	lib/jobs_list.rb	/^  def initialize(spec)$/;"	f	class:JobsList
 initialize	lib/schedule.rb	/^  def initialize$/;"	f	class:Schedule
 ordered_jobs	lib/schedule.rb	/^  def ordered_jobs$/;"	f	class:Schedule
