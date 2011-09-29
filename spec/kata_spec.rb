@@ -48,14 +48,27 @@ c =>
   end
 
   context 'step 4 -- multiple jobs, single dependency' do
-    let(:input) { '
+    context 'with the given example' do
+      let(:input) { '
 a =>
 b => c
 c =>
 ' }
 
-    it_should_behave_like 'it reports all of the jobs', %w{a b c}
-    it_should_behave_like 'jobs come in this order', 'c', 'b'
+      it_should_behave_like 'it reports all of the jobs', %w{a b c}
+      it_should_behave_like 'jobs come in this order', 'c', 'b'
+    end
+
+    context 'with a very similar example' do
+      let(:input) { '
+a =>
+b => a
+c =>
+' }
+
+      it_should_behave_like 'it reports all of the jobs', %w{a b c}
+      it_should_behave_like 'jobs come in this order', 'a', 'b'
+    end
   end
 
   context 'step 5 -- multiple jobs, multiple dependencies' do
