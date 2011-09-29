@@ -1,7 +1,7 @@
+require './lib/jobs_list'
+
 def parse(input)
-  dependencies = input.split("\n")
-  jobs = dependencies.map {|s| s[0]}
-  jobs.reverse.join
+  JobsList.new(input).sequence.join
 end
 
 shared_examples_for 'it reports all of the jobs' do |expected_jobs|
