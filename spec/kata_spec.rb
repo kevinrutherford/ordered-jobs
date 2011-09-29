@@ -1,7 +1,10 @@
 require './lib/jobs_list'
+require './lib/schedule'
 
 def parse(input)
-  JobsList.new(input).sequence.join
+  schedule = Schedule.new
+  JobsList.new(input).add_to(schedule)
+  schedule.ordered_jobs.join
 end
 
 shared_examples_for 'it reports all of the jobs' do |expected_jobs|
