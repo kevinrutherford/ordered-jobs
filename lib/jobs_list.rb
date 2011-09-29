@@ -1,8 +1,8 @@
 class JobsList
 
   def initialize(spec)
-    dependencies = spec.split("\n")
-    @jobs = dependencies.map {|s| s[0]}
+    instructions = spec.split("\n")
+    @jobs = instructions.map {|s| s[0]}
   end
 
   def sequence
