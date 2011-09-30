@@ -4,8 +4,8 @@ class Schedule
     @jobs = []
   end
 
-  def add(instruction)
-    @jobs << instruction
+  def add(job)
+    @jobs << job
   end
 
   def ordered_jobs

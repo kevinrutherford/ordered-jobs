@@ -9,6 +9,13 @@ describe Instruction do
         Instruction.parse('a =>')
       end
     end
+
+    context 'with a dependency' do
+      it 'creates a new Job object' do
+        Job.should_receive(:new).with('a').exactly(:once)
+        Instruction.parse('a => b')
+      end
+    end
   end
 end
 
