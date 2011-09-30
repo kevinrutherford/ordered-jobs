@@ -11,9 +11,9 @@ describe Instruction do
     end
 
     context 'with a dependency' do
-      it 'creates a new Job object' do
-        Job.should_receive(:new).with('a').exactly(:once)
-        Instruction.parse('a => b')
+      it 'makes the new Job dependent' do
+        other = Job.new('b')
+        Instruction.parse('a => b').depends_on?(other).should be_true
       end
     end
   end

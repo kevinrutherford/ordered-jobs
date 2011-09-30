@@ -5,7 +5,7 @@ require './lib/schedule'
 def parse(input)
   schedule = Schedule.new
   JobsList.new(input).add_to(schedule)
-  schedule.ordered_jobs.join
+  schedule.ordered_jobs.map(&:name).join
 end
 
 shared_examples_for 'it reports all of the jobs' do |expected_jobs|

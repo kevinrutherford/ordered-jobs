@@ -15,7 +15,7 @@ class Job
   end
 
   def add_to(schedule)
-    schedule.add(@name)
+    schedule.add(self)
   end
 
   def <=>(other)
