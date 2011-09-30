@@ -1,7 +1,7 @@
 class JobsList
 
   def initialize(spec)
-    @instructions = spec.split("\n").map {|instr| Instruction.new(instr) }
+    @instructions = spec.split("\n").map {|instr| Instruction.parse(instr) }
   end
 
   def add_to(schedule)
