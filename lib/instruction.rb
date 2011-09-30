@@ -2,12 +2,12 @@ class Instruction
 
   class << self
     def parse(line)
-      new(line)
+      new(line[0])
     end
   end
 
-  def initialize(line)
-    @job = line[0]
+  def initialize(name)
+    @job = name
   end
 
   def add_to(schedule)
