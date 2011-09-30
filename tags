@@ -5,13 +5,15 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Instruction	lib/instruction.rb	/^class Instruction$/;"	c
+Job	lib/job.rb	/^class Job$/;"	c
 JobsList	lib/jobs_list.rb	/^class JobsList$/;"	c
 Schedule	lib/schedule.rb	/^class Schedule$/;"	c
 add	lib/schedule.rb	/^  def add(instruction)$/;"	f	class:Schedule
-add_to	lib/instruction.rb	/^  def add_to(schedule)$/;"	f	class:Instruction
+add_to	lib/job.rb	/^  def add_to(schedule)$/;"	f	class:Job
 add_to	lib/jobs_list.rb	/^  def add_to(schedule)$/;"	f	class:JobsList
-initialize	lib/instruction.rb	/^  def initialize(line)$/;"	f	class:Instruction
+initialize	lib/job.rb	/^  def initialize(name)$/;"	f	class:Job
 initialize	lib/jobs_list.rb	/^  def initialize(spec)$/;"	f	class:JobsList
 initialize	lib/schedule.rb	/^  def initialize$/;"	f	class:Schedule
 ordered_jobs	lib/schedule.rb	/^  def ordered_jobs$/;"	f	class:Schedule
+parse	lib/instruction.rb	/^    def parse(line)$/;"	f	class:Instruction
 parse	spec/kata_spec.rb	/^def parse(input)$/;"	f

@@ -42,33 +42,21 @@ describe 'Ordered Jobs' do
   end
 
   context 'step 3 -- multiple jobs' do
-    let(:input) { '
-a =>
-b =>
-c =>
-' }
+    let(:input) { "a =>\nb =>\nc =>" }
 
     it_should_behave_like 'it reports all of the jobs', %w{a b c}
   end
 
   context 'step 4 -- multiple jobs, single dependency' do
     context 'with the given example' do
-      let(:input) { '
-a =>
-b => c
-c =>
-' }
+      let(:input) { "a =>\nb => c\nc =>" }
 
       it_should_behave_like 'it reports all of the jobs', %w{a b c}
       it_should_behave_like 'jobs come in this order', 'c', 'b'
     end
 
     context 'with a very similar example' do
-      let(:input) { '
-a =>
-b => a
-c =>
-' }
+      let(:input) { "a =>\nb => a\nc =>" }
 
       it_should_behave_like 'it reports all of the jobs', %w{a b c}
       it_should_behave_like 'jobs come in this order', 'a', 'b'
@@ -76,14 +64,7 @@ c =>
   end
 
   context 'step 5 -- multiple jobs, multiple dependencies' do
-    let(:input) { '
-a =>
-b => c
-c => f
-d => a
-e => b
-f =>
-' }
+    let(:input) { "a =>\nb => c\nc => f\nd => a\ne => b\nf =>" }
 
     it_should_behave_like 'it reports all of the jobs', %w{a b c d e f}
     #it_should_behave_like 'jobs come in this order', 'd', 'a'
