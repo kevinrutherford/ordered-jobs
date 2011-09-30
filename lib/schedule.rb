@@ -9,7 +9,7 @@ class Schedule
   end
 
   def ordered_jobs
-    @jobs
+    @jobs.sort
   end
 end
 
