@@ -1,3 +1,5 @@
+require './lib/job'
+
 describe Job do
   let(:other) { Job.new('s') }
   subject { Job.new('h') }
@@ -72,7 +74,7 @@ describe Job do
         end
       end
     end
-
   end
+
 end
 
