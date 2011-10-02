@@ -73,5 +73,14 @@ describe 'Ordered Jobs' do
     it_should_behave_like 'jobs come in this order', 'a', 'd'
     it_should_behave_like 'jobs come in this order', 'b', 'e'
   end
+
+  context 'step 6 -- multiple jobs, self-referencing dependency' do
+    let(:input) { "a =>\nb =>\nc => c" }
+
+    it 'complains' do
+      expect { parse(input) }.to raise_error
+    end
+  end
+
 end
 
