@@ -82,5 +82,13 @@ describe 'Ordered Jobs' do
     end
   end
 
+  context 'step 7 -- multiple jobs, circular dependency chain' do
+    let(:input) { "a =>\nb => c\nc => f\nd => a\ne =>\nf => b" }
+
+    it 'complains' do
+      expect { parse(input) }.to raise_error
+    end
+  end
+
 end
 
