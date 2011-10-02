@@ -1,3 +1,4 @@
+require './lib/job'
 require './lib/jobs_list'
 require './lib/instruction'
 require './lib/schedule'
@@ -67,8 +68,10 @@ describe 'Ordered Jobs' do
     let(:input) { "a =>\nb => c\nc => f\nd => a\ne => b\nf =>" }
 
     it_should_behave_like 'it reports all of the jobs', %w{a b c d e f}
-    #it_should_behave_like 'jobs come in this order', 'd', 'a'
-    #it_should_behave_like 'jobs come in this order', 'e', 'b'
+    it_should_behave_like 'jobs come in this order', 'c', 'b'
+    it_should_behave_like 'jobs come in this order', 'f', 'c'
+    it_should_behave_like 'jobs come in this order', 'a', 'd'
+    it_should_behave_like 'jobs come in this order', 'b', 'e'
   end
 end
 
