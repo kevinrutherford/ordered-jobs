@@ -16,6 +16,12 @@ describe Instruction do
         Instruction.parse('a => b').depends_on?(other).should be_true
       end
     end
+
+    context 'with a self-referenctial dependency' do
+      it 'raises an error' do
+        expect { Instruction.parse('a => a') }.to raise_error
+      end
+    end
   end
 end
 
