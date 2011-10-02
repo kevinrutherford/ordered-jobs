@@ -42,8 +42,8 @@ describe Job do
     context 'given a job later in the alphabet' do
       let(:other) { Job.new('s') }
 
-      it 'will sort the jobs alphebatically' do
-        subject.<=>(other).should < 0
+      it 'will compare them as equal' do
+        subject.<=>(other).should == 0
       end
 
       context 'when I depend on it' do
@@ -60,8 +60,8 @@ describe Job do
     context 'given a job earlier in the alphabet' do
       let(:other) { Job.new('c') }
 
-      it 'will sort the jobs alphebatically' do
-        subject.<=>(other).should > 0
+      it 'will compare them as equal' do
+        subject.<=>(other).should == 0
       end
 
       context 'when it depends on me' do
