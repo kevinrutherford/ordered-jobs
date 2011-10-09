@@ -78,7 +78,7 @@ describe 'Ordered Jobs' do
     let(:input) { "a =>\nb =>\nc => c" }
 
     it 'complains' do
-      expect { parse(input) }.to raise_error
+      expect { parse(input) }.to raise_error(SelfDependencyError)
     end
   end
 
@@ -86,7 +86,7 @@ describe 'Ordered Jobs' do
     let(:input) { "a =>\nb => c\nc => f\nd => a\ne =>\nf => b" }
 
     it 'complains' do
-      expect { parse(input) }.to raise_error
+      expect { parse(input) }.to raise_error(CircularDependencyError)
     end
   end
 
