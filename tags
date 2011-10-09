@@ -5,18 +5,20 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 <=>	lib/job.rb	/^  def <=>(other)$/;"	f	class:Job
+CircularDependencyError	lib/instruction.rb	/^class CircularDependencyError < ArgumentError; end$/;"	c
 Instruction	lib/instruction.rb	/^class Instruction$/;"	c
 Job	lib/job.rb	/^class Job$/;"	c
-JobsList	lib/jobs_list.rb	/^class JobsList$/;"	c
-Schedule	lib/schedule.rb	/^class Schedule$/;"	c
-add	lib/schedule.rb	/^  def add(job)$/;"	f	class:Schedule
+Roster	lib/roster.rb	/^class Roster$/;"	c
+SelfDependencyError	lib/instruction.rb	/^class SelfDependencyError < ArgumentError; end$/;"	c
 add_to	lib/job.rb	/^  def add_to(schedule)$/;"	f	class:Job
-add_to	lib/jobs_list.rb	/^  def add_to(schedule)$/;"	f	class:JobsList
+add_to	lib/roster.rb	/^  def add_to(schedule)$/;"	f	class:Roster
+create_job	lib/roster.rb	/^  def create_job(name)$/;"	f	class:Roster
 depends_on	lib/job.rb	/^  def depends_on(predecessor)$/;"	f	class:Job
 depends_on?	lib/job.rb	/^  def depends_on?(other)$/;"	f	class:Job
 initialize	lib/job.rb	/^  def initialize(name)$/;"	f	class:Job
-initialize	lib/jobs_list.rb	/^  def initialize(spec)$/;"	f	class:JobsList
-initialize	lib/schedule.rb	/^  def initialize$/;"	f	class:Schedule
-ordered_jobs	lib/schedule.rb	/^  def ordered_jobs$/;"	f	class:Schedule
-parse	lib/instruction.rb	/^    def parse(line)$/;"	f	class:Instruction
+initialize	lib/roster.rb	/^  def initialize(spec)$/;"	f	class:Roster
+job	lib/roster.rb	/^  def job(name)$/;"	f	class:Roster
+merge	lib/job.rb	/^  def merge(other)$/;"	f	class:Job
+ordered_jobs	lib/roster.rb	/^  def ordered_jobs$/;"	f	class:Roster
+parse	lib/instruction.rb	/^    def parse(line, factory)$/;"	f	class:Instruction
 parse	spec/kata_spec.rb	/^def parse(input)$/;"	f

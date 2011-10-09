@@ -10,11 +10,7 @@ class Roster
   end
 
   def job(name)
-    if @jobs.has_key?(name)
-      @jobs.fetch(name)
-    else
-      @jobs[name] = Job.new(name)
-    end
+    @jobs.fetch(name) { create_job(name) }
   end
 
   def add_to(schedule)
@@ -23,6 +19,12 @@ class Roster
 
   def ordered_jobs
     @jobs.values.sort
+  end
+
+private
+
+  def create_job(name)
+    @jobs[name] = Job.new(name)
   end
 
 end
