@@ -10,7 +10,6 @@ Instruction	lib/instruction.rb	/^class Instruction$/;"	c
 Job	lib/job.rb	/^class Job$/;"	c
 Roster	lib/roster.rb	/^class Roster$/;"	c
 SelfDependencyError	lib/instruction.rb	/^class SelfDependencyError < ArgumentError; end$/;"	c
-add_to	lib/job.rb	/^  def add_to(schedule)$/;"	f	class:Job
 create_job	lib/roster.rb	/^  def create_job(name)$/;"	f	class:Roster
 depends_on	lib/job.rb	/^  def depends_on(predecessor)$/;"	f	class:Job
 depends_on?	lib/job.rb	/^  def depends_on?(other)$/;"	f	class:Job

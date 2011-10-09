@@ -12,13 +12,7 @@ class Job
 
   def depends_on?(other)
     return false unless @predecessor
-    return true if @predecessor.equal?(other)
-    @predecessor.depends_on?(other)
-  end
-
-  def add_to(schedule)
-    schedule.insert(@predecessor) if @predecessor
-    schedule.add(self)
+    @predecessor.equal?(other) || @predecessor.depends_on?(other)
   end
 
   def merge(other)
