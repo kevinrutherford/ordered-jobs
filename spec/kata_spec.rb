@@ -1,12 +1,9 @@
 require './lib/job'
 require './lib/jobs_list'
 require './lib/instruction'
-require './lib/schedule'
 
 def parse(input)
-  schedule = Schedule.new
-  JobsList.new(input).add_to(schedule)
-  schedule.ordered_jobs.map(&:name).join
+  JobsList.new(input).ordered_jobs.map(&:name).join
 end
 
 shared_examples_for 'it reports all of the jobs' do |expected_jobs|

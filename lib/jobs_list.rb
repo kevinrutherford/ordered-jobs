@@ -18,5 +18,9 @@ class JobsList
     @jobs.each_value {|job| job.add_to(schedule) }
   end
 
+  def ordered_jobs
+    @jobs.values.sort
+  end
+
 end
 
