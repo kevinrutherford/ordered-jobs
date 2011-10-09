@@ -11,7 +11,9 @@ class Job
   end
 
   def depends_on?(other)
-    @predecessor && @predecessor.name == other.name
+    return false unless @predecessor
+    return true if @predecessor.name == other.name
+    @predecessor.depends_on?(other)
   end
 
   def add_to(schedule)

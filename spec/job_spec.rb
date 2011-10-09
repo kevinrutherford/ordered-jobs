@@ -28,6 +28,19 @@ describe Job do
         subject.depends_on?(other).should be_false
       end
     end
+
+    context 'given a job that indirectly depends on me' do
+      let(:middle_man) { Job.new('m') }
+
+      before do
+        middle_man.depends_on(subject)
+        other.depends_on(middle_man)
+      end
+
+      it 'dependency is transitive' do
+        other.depends_on?(subject).should be_true
+      end
+    end
   end
 
   describe '#<=>' do
