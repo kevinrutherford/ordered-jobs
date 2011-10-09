@@ -16,7 +16,6 @@ depends_on?	lib/job.rb	/^  def depends_on?(other)$/;"	f	class:Job
 initialize	lib/job.rb	/^  def initialize(name)$/;"	f	class:Job
 initialize	lib/roster.rb	/^  def initialize(spec)$/;"	f	class:Roster
 job	lib/roster.rb	/^  def job(name)$/;"	f	class:Roster
-merge	lib/job.rb	/^  def merge(other)$/;"	f	class:Job
 ordered_jobs	lib/roster.rb	/^  def ordered_jobs$/;"	f	class:Roster
 parse	lib/instruction.rb	/^    def parse(line, factory)$/;"	f	class:Instruction
 parse	spec/kata_spec.rb	/^def parse(input)$/;"	f

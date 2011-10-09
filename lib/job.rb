@@ -15,11 +15,6 @@ class Job
     @predecessor.equal?(other) || @predecessor.depends_on?(other)
   end
 
-  def merge(other)
-    return if @predecessor
-    @predecessor = other.predecessor
-  end
-
   def <=>(other)
     return 1 if self.depends_on?(other)
     return -1 if other.depends_on?(self)
