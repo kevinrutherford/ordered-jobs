@@ -14,7 +14,7 @@ describe Instruction do
 
     context 'with a dependency' do
       it 'makes the new Job dependent' do
-        other = Job.new('b')
+        other = factory.job('b')
         Instruction.parse('a => b', factory).depends_on?(other).should be_true
       end
     end

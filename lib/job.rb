@@ -12,7 +12,7 @@ class Job
 
   def depends_on?(other)
     return false unless @predecessor
-    return true if @predecessor.name == other.name
+    return true if @predecessor.equal?(other)
     @predecessor.depends_on?(other)
   end
 
@@ -24,10 +24,6 @@ class Job
   def merge(other)
     return if @predecessor
     @predecessor = other.predecessor
-  end
-
-  def ==(other)
-    @name == other.name
   end
 
   def <=>(other)
