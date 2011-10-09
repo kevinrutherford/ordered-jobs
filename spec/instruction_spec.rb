@@ -1,8 +1,9 @@
 require './lib/instruction'
 require './lib/job'
+require './lib/roster'
 
 describe Instruction do
-  let(:factory) { JobsList.new('') }
+  let(:factory) { Roster.new('') }
 
   describe '.parse' do
     context 'with no dependency' do

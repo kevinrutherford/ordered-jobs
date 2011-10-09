@@ -1,4 +1,7 @@
-class JobsList
+require './lib/instruction'
+require './lib/job'
+
+class Roster
 
   def initialize(spec)
     @jobs = {}
