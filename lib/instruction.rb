@@ -1,14 +1,14 @@
 class Instruction
 
   class << self
-    def parse(line)
+    def parse(line, factory)
       job, other = line.split('=>').map(&:strip)
-      result = Job.new(job)
+      result = factory.job(job)
       if other
         if other == job
           raise ArgumentException
         end
-        result.depends_on(Job.new(other))
+        result.depends_on(factory.job(other))
       end
       result
     end

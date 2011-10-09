@@ -9,5 +9,17 @@ describe JobsList do
       subject.add_to(schedule)
     end
   end
+
+  describe '#job' do
+    subject { JobsList.new('') }
+
+    it 'creates the named job' do
+      subject.job('j').name.should == 'j'
+    end
+
+    it 'returns the same instance every time' do
+      subject.job('s').should be subject.job('s')
+    end
+  end
 end
 
